@@ -18,17 +18,17 @@ public class TradeRoute extends SpringRouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("activemq:com.mk.camel.queue")
+        from("activemq:com.mk.camel.queue?acknowledgementModeName=CLIENT_ACKNOWLEDGE")
                 .processRef("tradeProcessor")
-                .to("jpa:com.mk.camel.entity.Trade")
+                .to("jpa:com.mk.camel.entity.Trade?flushOnSend=true")
                 .end()
         ;
 
         // the following will dump the database to files
-        from("jpa:com.mk.camel.entity.Trade?consumeDelete=false&delay=3000&consumeLockEntity=false")
-                .setHeader(Exchange.FILE_NAME, el("${in.body.id}.xml"))
-                .to("file:target/trade?autoCreate=true")
-                .end()
+        from("jpa:com.mk.camel.entity.Trade?consumeDelete=false&delay=5000&consumeLockEntity=false")
+                .processRef("tradesProcessor")
+                //.beanRef("tradesProcessor", "makeList")
+                //.to("mock:results")
         ;
     }
 }
