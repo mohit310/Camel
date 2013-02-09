@@ -2,9 +2,14 @@ package com.mk.camel.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.xml.bind.annotation.*;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,46 +19,49 @@ import java.sql.Date;
  * To change this template use File | Settings | File Templates.
  */
 @Entity(name = "Trade")
-@XmlType
-@XmlRootElement(name = "Trade")
+@XmlRootElement(name = "trade")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Trade implements Serializable {
+public class Trade implements Serializable{
 
+    @XmlAttribute
+    @Id
     private Long id;
+    @Temporal(TemporalType.DATE)
     private Date tradeDate;
+    @Temporal(TemporalType.DATE)
     private Date settlementDate;
     private Double quantity;
     private Double price;
 
-    @Override
-    public String toString() {
-        return "Trade{" +
-                "id=" + id +
-                ", tradeDate=" + tradeDate +
-                ", settlementDate=" + settlementDate +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Trade[" +
+//                "id:" + id +
+//                " tradeDate:" + tradeDate +
+//                " settlementDate:" + settlementDate +
+//                " quantity:" + quantity +
+//                " price:" + price +
+//                "]";
+//    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Trade)) return false;
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof Trade)) return false;
+//
+//        Trade trade = (Trade) o;
+//
+//        if (!id.equals(trade.id)) return false;
+//
+//        return true;
+//    }
 
-        Trade trade = (Trade) o;
+//    @Override
+//    @XmlTransient
+//    public int hashCode() {
+//        return id.hashCode();
+//    }
 
-        if (!id.equals(trade.id)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return id.hashCode();
-    }
-
-    @Id
     public Long getId() {
         return id;
     }

@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jms.*;
+import java.util.Date;
 import java.util.Random;
 
 /**
@@ -19,12 +20,9 @@ import java.util.Random;
 public class SendMessage {
 
     private static final Logger log = LoggerFactory.getLogger(SendMessage.class);
-
-
     // URL of the JMS server. DEFAULT_BROKER_URL will just mean
     // that JMS server is on localhost
     private static String url = ActiveMQConnection.DEFAULT_BROKER_URL;
-
     // Name of the queue we will be sending messages to
     private static String queuename = "com.mk.camel.queue";
 
@@ -52,20 +50,20 @@ public class SendMessage {
             // to MessageConsumer which is used for receiving them)
             MessageProducer producer = session.createProducer(destination);
 
-//            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 10; i++) {
                 Trade trade = new Trade();
                 trade.setId(getRandomId());
                 trade.setPrice(100d);
                 trade.setQuantity(100d);
-                trade.setTradeDate(new java.sql.Date(System.currentTimeMillis()));
-                trade.setSettlementDate(new java.sql.Date(System.currentTimeMillis()));
+                trade.setTradeDate(new Date());
+                trade.setSettlementDate(new Date());
 
                 ObjectMessage message = session.createObjectMessage(trade);
 
                 // Here we are sending the message!
                 producer.send(message);
                 System.out.println("Sent message '" + message.getObject() + "'");
-//            }
+            }
             connection.close();
         } catch (JMSException e) {
             log.error("Error in sending message", e);

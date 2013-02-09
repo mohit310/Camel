@@ -21,12 +21,14 @@ public class TradeRoute extends SpringRouteBuilder {
         from("activemq:com.mk.camel.queue")
                 .processRef("tradeProcessor")
                 .to("jpa:com.mk.camel.entity.Trade")
+                .end()
         ;
 
         // the following will dump the database to files
         from("jpa:com.mk.camel.entity.Trade?consumeDelete=false&delay=3000&consumeLockEntity=false")
                 .setHeader(Exchange.FILE_NAME, el("${in.body.id}.xml"))
-                .to("file:target/trade?autoCreate=true");
+                .to("file:target/trade?autoCreate=true")
+                .end()
         ;
     }
 }
