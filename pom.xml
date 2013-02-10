@@ -11,7 +11,34 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <eclipselink.version>2.4.1</eclipselink.version>
+        <protocCommand>/usr/local/bin/protoc</protocCommand>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <tasks>
+                                <exec executable="/usr/local/bin/protoc">
+                                    <arg value="--java_out=src/main/java"/>
+                                    <arg value="src/main/protobuf/camelexample.proto"/>
+                                </exec>
+                            </tasks>
+                            <sourceRoot>src/main/java</sourceRoot>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     <repositories>
         <repository>
@@ -52,6 +79,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-protobuf</artifactId>
+            <version>2.10.3</version>
+        </dependency>
+
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.0.9</version>
@@ -87,7 +120,12 @@
             <version>5.7.0</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>2.4.1</version>
+            <scope>compile</scope>
+        </dependency>
 
 
     </dependencies>

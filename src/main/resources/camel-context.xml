@@ -14,7 +14,6 @@
     </camelContext>
 
     <bean id="tradeProcessor" class="com.mk.camel.processor.TradeProcessor"/>
-    <bean id="tradesProcessor" class="com.mk.camel.processor.TradesProcessor"/>
 
     <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
         <property name="transactionManager">

@@ -27,6 +27,9 @@
         <module name="CamelExample" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="CamelExample" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 

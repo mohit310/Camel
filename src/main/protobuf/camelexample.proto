@@ -1,0 +1,9 @@
+package com.mk.camel.proto;
+
+message Trade {
+    required sint64 id = 1;
+    optional double quantity = 2;
+    optional double price = 3;
+    optional int64 tradedate = 4;
+    optional int64 settlementdate = 5;
+}
