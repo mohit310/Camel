@@ -19,10 +19,12 @@ public class TradeRoute extends SpringRouteBuilder {
     @Override
     public void configure() throws Exception {
         from("activemq:com.mk.camel.proto.queue?acknowledgementModeName=CLIENT_ACKNOWLEDGE")
+                //.transacted()
                 .unmarshal()
                 .protobuf("com.mk.camel.proto.Camelexample$Trade")
                 .processRef("tradeProcessor")
-                .to("jpa:com.mk.camel.entity.Trade?flushOnSend=true")
+                //.to("mock:result")
+                //.to("jpa:com.mk.camel.entity.Trade?flushOnSend=true")
         ;
     }
 }

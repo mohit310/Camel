@@ -9,6 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/target/derby" />
       <excludeFolder url="file://$MODULE_DIR$/target/test-classes" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -38,6 +39,8 @@
     <orderEntry type="library" name="Maven: de.odysseus.juel:juel:2.1.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-protobuf:2.10.3" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:2.4.1" level="project" />
+    <orderEntry type="library" name="Maven: commons-dbcp:commons-dbcp:1.4" level="project" />
+    <orderEntry type="library" name="Maven: commons-pool:commons-pool:1.5.4" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.0.9" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.0.9" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.persistence:eclipselink:2.4.1" level="project" />
@@ -59,7 +62,6 @@
     <orderEntry type="library" name="Maven: org.jasypt:jasypt:1.9.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.activemq:activemq-pool:5.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.geronimo.specs:geronimo-jta_1.0.1B_spec:1.0.1" level="project" />
-    <orderEntry type="library" name="Maven: commons-pool:commons-pool:1.6" level="project" />
   </component>
 </module>
 
