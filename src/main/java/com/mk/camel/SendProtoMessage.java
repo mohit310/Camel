@@ -49,7 +49,7 @@ public class SendProtoMessage {
             // to MessageConsumer which is used for receiving them)
             MessageProducer producer = session.createProducer(destination);
 
-            for (int i = 0; i < 10000; i++) {
+//            for (int i = 0; i < 10000; i++) {
                 Trade trade = Trade.newBuilder().setId(getRandomId())
                         .setPrice(100d)
                         .setQuantity(100d)
@@ -65,7 +65,7 @@ public class SendProtoMessage {
                 // Here we are sending the message!
                 producer.send(message);
                 System.out.println("Sent message '" + trade + "'");
-            }
+//            }
             connection.close();
         } catch (JMSException e) {
             log.error("Error in sending message", e);
